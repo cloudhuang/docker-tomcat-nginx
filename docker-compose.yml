@@ -1,0 +1,28 @@
+portal:
+  image: nginx
+  ports:
+   - "80:80"
+  volumes:
+   - /c/Users/lhuang/Docker_Compose/docker-cluster-master/cluster/default.conf:/etc/nginx/conf.d/default.conf
+  links:
+   - tomcatOne:tomcat1
+   - tomcatTwo:tomcat2
+   - tomcatThree:tomcat3
+tomcatOne:
+  image: tomcat
+  volumes:
+   - /c/Users/lhuang/Docker_Compose/docker-cluster-master/cluster/server.xml:/usr/local/tomcat/conf/server.xml
+   - /c/Users/lhuang/Docker_Compose/docker-cluster-master/cluster/ROOT:/usr/local/tomcat/webapps/ROOT
+   - /c/Users/lhuang/Docker_Compose/docker-cluster-master/cluster/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+tomcatTwo:
+  image: tomcat
+  volumes:
+   - /c/Users/lhuang/Docker_Compose/docker-cluster-master/cluster/server.xml:/usr/local/tomcat/conf/server.xml
+   - /c/Users/lhuang/Docker_Compose/docker-cluster-master/cluster/ROOT:/usr/local/tomcat/webapps/ROOT
+   - /c/Users/lhuang/Docker_Compose/docker-cluster-master/cluster/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+tomcatThree:
+  image: tomcat
+  volumes:
+   - /c/Users/lhuang/Docker_Compose/docker-cluster-master/cluster/server.xml:/usr/local/tomcat/conf/server.xml
+   - /c/Users/lhuang/Docker_Compose/docker-cluster-master/cluster/ROOT:/usr/local/tomcat/webapps/ROOT
+   - /c/Users/lhuang/Docker_Compose/docker-cluster-master/cluster/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
